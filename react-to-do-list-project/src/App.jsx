@@ -1,15 +1,12 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import "./styles.css"
 import ToDoList from "./ToDoList";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="bg-stone-900 h-screen flex items-center justify-center w-full p-3">
       <ToDoList></ToDoList>
-    </>
+    </div>
   );
 }
 
