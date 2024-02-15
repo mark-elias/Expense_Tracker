@@ -1,13 +1,8 @@
-import "./styles.css"
-import ToDoList from "./ToDoList";
+import "./styles.css";
+import Budgeter from "./Budgeter";
 
 function App() {
-
-  return (
-    <div className="bg-stone-900 h-screen flex items-center justify-center w-full p-3">
-      <ToDoList></ToDoList>
-    </div>
-  );
+  return <Budgeter></Budgeter>;
 }
 
 export default App;
