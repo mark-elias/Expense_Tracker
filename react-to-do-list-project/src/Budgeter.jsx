@@ -33,6 +33,16 @@ function Budgeter() {
     const sortedByCost = [...bills].sort((a, b) => a.cost - b.cost);
     setBills(sortedByCost);
   }
+  function sortByDate() {
+    const sortedByDate = [...bills].sort((a, b) => a.date - b.date);
+    setBills(sortedByDate);
+  }
+  function sortByName() {
+    const sortedByName = [...bills].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    setBills(sortedByName);
+  }
   function handleNameChange(event) {
     setName(event.target.value);
   }
@@ -77,9 +87,26 @@ function Budgeter() {
         </button>
       </div>
       <div id="tabs">
-        <h2>tab row</h2>
-        <button className="bg-blue-400 p-3" onClick={sortByCost}>
-          clck to sort
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          onClick={sortByName}
+        >
+          A-Z
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          onClick={sortByCost}
+        >
+          $$$
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          onClick={sortByDate}
+        >
+          Date
         </button>
       </div>
       <div id="bills-container">
