@@ -27,12 +27,16 @@ function Budgeter() {
     setDate("");
   }
   function handleRemove(index) {
-    const filteredArray = bills.filter((element, i)=> i !== index)
-    setBills(filteredArray)
+    const filteredArray = bills.filter((element, i) => i !== index);
+    setBills(filteredArray);
   }
-  function sortByCost() {
-    const sortedByCost = [...bills].sort((a, b) => a.cost - b.cost);
-    setBills(sortedByCost);
+  function sortByLowestCost() {
+    const sortedLowest = [...bills].sort((a, b) => a.cost - b.cost);
+    setBills(sortedLowest);
+  }
+  function sortByLargestCost() {
+    const sortedLargest = [...bills].sort((a, b) => b.cost - a.cost);
+    setBills(sortedLargest);
   }
   function sortByDate() {
     const sortedByDate = [...bills].sort((a, b) => a.date - b.date);
@@ -56,28 +60,28 @@ function Budgeter() {
 
   return (
     <main className="p-5 md:mx-40 lg:mx-64 xl:mx-96 ">
-      <h1 className="text-4xl font-black my-10">Budgeter</h1>
+      <h1 className="text-4xl font-black my-10">💲 Budgeter</h1>
       <div className="input-container">
         <input
           type="text"
           value={name}
           onChange={handleNameChange}
           placeholder="enter Name of bill"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
         ></input>
         <input
           type="number"
           value={cost}
           onChange={handleCostChange}
           placeholder="enter Cost of bill"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
         ></input>
         <input
           type="number"
           value={date}
           onChange={handleDateChange}
           placeholder="which day of the month is the bill due"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
         ></input>
         <button
           type="button"
@@ -99,7 +103,14 @@ function Budgeter() {
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={sortByCost}
+          onClick={sortByLowestCost}
+        >
+          $
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          onClick={sortByLargestCost}
         >
           $$$
         </button>
@@ -110,7 +121,7 @@ function Budgeter() {
         >
           Date
         </button>
-        <h2 className="mb-3">click on a bill to remove it</h2>
+        <h2 className="my-3">Click on a bill to remove it</h2>
       </div>
       <div id="bills-container">
         <ul>
@@ -125,8 +136,6 @@ function Budgeter() {
                 <div className="w-16">${element.cost}</div>
                 <div className="w-20">Due: {element.date}</div>
               </div>
-
-              {/* {element.name} ${element.cost} Due Date: {element.date} */}
             </li>
           ))}
         </ul>
