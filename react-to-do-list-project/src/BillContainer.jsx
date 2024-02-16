@@ -1,14 +1,10 @@
-function BillContainer() {
+function BillContainer({bills}) {
 
-  
+
   return (
     <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li className="bg-slate-100 p-3 rounded my-2">billname $$$ date</li> 
     </ul>
-    
   );
 }
 
