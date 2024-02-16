@@ -11,15 +11,28 @@ function Budgeter() {
   const [date, setDate] = useState();
 
   function handleAdd() {
+    //create new object with values from input fields
     const newBill = {
       name: name,
       cost: cost,
-      date: date
-    }
+      date: date,
+    };
 
-    setBills((b)=> [...b, newBill])
+    // make new bills Array of Objects with new object
+    setBills((b) => [...b, newBill]);
+
+    // reset input fields
+    setName("");
+    setCost("");
+    setDate("");
   }
-  function handleRemove(index) {}
+  function handleRemove(index) {
+    console.log("removing");
+  }
+  function sortByCost() {
+    const sortedByCost = [...bills].sort((a, b) => a.cost - b.cost);
+    setBills(sortedByCost);
+  }
   function handleNameChange(event) {
     setName(event.target.value);
   }
@@ -57,7 +70,7 @@ function Budgeter() {
         ></input>
         <button
           type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 my-1"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 my-1"
           onClick={handleAdd}
         >
           Add Bill
@@ -65,10 +78,17 @@ function Budgeter() {
       </div>
       <div id="tabs">
         <h2>tab row</h2>
+        <button className="bg-blue-400 p-3" onClick={sortByCost}>
+          clck to sort
+        </button>
       </div>
       <div id="bills-container">
         <ul>
-          {bills.map()}
+          {bills.map((element, index) => (
+            <li key={index} className="bg-slate-200 p-2 rounded my-2">
+              {element.name} ${element.cost} Due Date: {element.date}
+            </li>
+          ))}
         </ul>
       </div>
     </main>
