@@ -1,22 +1,19 @@
 import { useState } from "react";
-import InputContainer from "./InputContainer";
-import TabContainer from "./TabContainer";
-import BillContainer from "./BillContainer";
 
 function Budgeter() {
 
-  const items = [
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' },
+  const [] = useState([{}])
+
+  const bills = [
+    { id: 1, name: 'School Loans', cost: 285, date: 11 },
+    { id: 2, name: 'Spotify', cost: 15, date: 22 },
+    { id: 3, name: 'Season Tickets', cost: 82, date: 6 }
   ];
   
   return (
     <div className="p-5 md:mx-40 lg:mx-64 xl:mx-96 ">
       <h1 className="text-4xl font-black my-10">Budgeter</h1>
-      <InputContainer></InputContainer>
-      <TabContainer></TabContainer>
-      <BillContainer></BillContainer>
+      
     </div>
   );
 }
