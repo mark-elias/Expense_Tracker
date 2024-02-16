@@ -27,7 +27,8 @@ function Budgeter() {
     setDate("");
   }
   function handleRemove(index) {
-    console.log("removing");
+    const filteredArray = bills.filter((element, i)=> i !== index)
+    setBills(filteredArray)
   }
   function sortByCost() {
     const sortedByCost = [...bills].sort((a, b) => a.cost - b.cost);
@@ -75,7 +76,7 @@ function Budgeter() {
           type="number"
           value={date}
           onChange={handleDateChange}
-          placeholder="enter Date of bill"
+          placeholder="which day of the month is the bill due"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full my-1"
         ></input>
         <button
@@ -86,7 +87,8 @@ function Budgeter() {
           Add Bill
         </button>
       </div>
-      <div id="tabs">
+      <div id="tabs" className="my-5">
+        <h2 className="mb-3">Select how to order your bills</h2>
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
@@ -108,12 +110,23 @@ function Budgeter() {
         >
           Date
         </button>
+        <h2 className="mb-3">click on a bill to remove it</h2>
       </div>
       <div id="bills-container">
         <ul>
           {bills.map((element, index) => (
-            <li key={index} className="bg-slate-200 p-2 rounded my-2">
-              {element.name} ${element.cost} Due Date: {element.date}
+            <li
+              key={index}
+              className="bg-slate-200 p-2 rounded my-2 hover:border-red-700 hover:border-2"
+              onClick={() => handleRemove(index)}
+            >
+              <div className="flex gap-3">
+                <div className="w-52">{element.name}</div>
+                <div className="w-16">${element.cost}</div>
+                <div className="w-20">Due: {element.date}</div>
+              </div>
+
+              {/* {element.name} ${element.cost} Due Date: {element.date} */}
             </li>
           ))}
         </ul>
