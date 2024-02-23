@@ -13,7 +13,6 @@ function Budgeter() {
   const [totalCost, setTotalCost] = useState(0);
   const [showDiv, setShowDiv] = useState(false);
 
-
   function handleAdd() {
     //create new object with values from input fields
     const newBill = {
@@ -24,7 +23,8 @@ function Budgeter() {
 
     // updating total cost
     setTotalCost((prevTotalCost) => prevTotalCost + newBill.cost);
-
+    // show other divs
+    setShowDiv(true);
     // make new bills Array of Objects with new object
     setBills((b) => [...b, newBill]);
 
@@ -99,6 +99,7 @@ function Budgeter() {
           Add Bill
         </button>
       </div>
+      {showDiv && (
       <div id="tabs" className="my-5">
         <h2 className="mb-3">Select how to order your bills</h2>
         <button
@@ -129,9 +130,9 @@ function Budgeter() {
         >
           Date
         </button>
-        
-        <h2 className="my-3">Click on a bill to remove it</h2>
       </div>
+      )}
+      {showDiv && <h2 className="my-3">Click on a bill to remove it</h2>}
       <div id="bills-container">
         <ul>
           {bills.map((element, index) => (
@@ -149,10 +150,13 @@ function Budgeter() {
           ))}
         </ul>
       </div>
-      <div className="flex gap-3 p-2 rounded my-2 text-blue-700 font-semibold">
-                <div className="w-52">Total Cost of Bills: </div>
-                <div className="w-16">${totalCost}</div>
-              </div>
+
+      {showDiv && (
+        <div className="flex gap-3 p-2 rounded my-2 text-blue-700 font-semibold">
+          <div className="w-52">Total Cost of Bills: </div>
+          <div className="w-16">${totalCost}</div>
+        </div>
+      )}
     </main>
   );
 }
