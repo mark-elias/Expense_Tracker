@@ -9,14 +9,21 @@ function Budgeter() {
   const [cost, setCost] = useState();
   // bille date
   const [date, setDate] = useState();
+  // total cost
+  const [totalCost, setTotalCost] = useState(0);
+  const [showDiv, setShowDiv] = useState(false);
+
 
   function handleAdd() {
     //create new object with values from input fields
     const newBill = {
       name: name,
-      cost: cost,
-      date: date,
+      cost: parseInt(cost),
+      date: parseInt(date),
     };
+
+    // updating total cost
+    setTotalCost((prevTotalCost) => prevTotalCost + newBill.cost);
 
     // make new bills Array of Objects with new object
     setBills((b) => [...b, newBill]);
@@ -48,6 +55,7 @@ function Budgeter() {
     );
     setBills(sortedByName);
   }
+
   function handleNameChange(event) {
     setName(event.target.value);
   }
@@ -60,7 +68,7 @@ function Budgeter() {
 
   return (
     <main className="p-5 md:mx-40 lg:mx-64 xl:mx-96 ">
-      <h1 className="text-4xl font-black my-10">💲 Budgeter</h1>
+      <h1 className="text-4xl font-black my-10 text-blue-700">💲 Budgeter</h1>
       <div className="input-container">
         <input
           type="text"
@@ -95,32 +103,33 @@ function Budgeter() {
         <h2 className="mb-3">Select how to order your bills</h2>
         <button
           type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
           onClick={sortByName}
         >
           A-Z
         </button>
         <button
           type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
           onClick={sortByLowestCost}
         >
           $
         </button>
         <button
           type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
           onClick={sortByLargestCost}
         >
           $$$
         </button>
         <button
           type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
           onClick={sortByDate}
         >
           Date
         </button>
+        
         <h2 className="my-3">Click on a bill to remove it</h2>
       </div>
       <div id="bills-container">
@@ -128,7 +137,7 @@ function Budgeter() {
           {bills.map((element, index) => (
             <li
               key={index}
-              className="bg-slate-200 p-2 rounded my-2 hover:border-red-700 hover:border-2"
+              className="bg-slate-200 p-2 rounded my-2 hover:bg-red-600 hover:text-white hover:shadow-xl hover:shadow-red-700/50"
               onClick={() => handleRemove(index)}
             >
               <div className="flex gap-3">
@@ -140,6 +149,10 @@ function Budgeter() {
           ))}
         </ul>
       </div>
+      <div className="flex gap-3 p-2 rounded my-2 text-blue-700 font-semibold">
+                <div className="w-52">Total Cost of Bills: </div>
+                <div className="w-16">${totalCost}</div>
+              </div>
     </main>
   );
 }
