@@ -37,9 +37,12 @@ function Budgeter() {
       console.log("please add a bill");
     }
   }
-  function handleRemove(index) {
+  function handleRemove(element, index) {
     const filteredArray = bills.filter((element, i) => i !== index);
     setBills(filteredArray);
+
+    // subtract removed bill cost from total cost
+    setTotalCost((prevTotalCost) => prevTotalCost - element.cost);
   }
   function sortByLowestCost() {
     const sortedLowest = [...bills].sort((a, b) => a.cost - b.cost);
@@ -143,7 +146,7 @@ function Budgeter() {
             <li
               key={index}
               className="bg-slate-200 p-2 rounded my-2 hover:bg-red-600 hover:text-white hover:shadow-xl hover:shadow-red-700/50"
-              onClick={() => handleRemove(index)}
+              onClick={() => handleRemove(element,index)}
             >
               <div className="flex gap-3">
                 <div className="w-52">{element.name}</div>
