@@ -21,17 +21,21 @@ function Budgeter() {
       date: parseInt(date),
     };
 
-    // updating total cost
-    setTotalCost((prevTotalCost) => prevTotalCost + newBill.cost);
-    // show other divs
-    setShowDiv(true);
-    // make new bills Array of Objects with new object
-    setBills((b) => [...b, newBill]);
+    if (newBill.name !== "" && !isNaN(newBill.cost) && !isNaN(newBill.date)) {
+      // updating total cost
+      setTotalCost((prevTotalCost) => prevTotalCost + newBill.cost);
+      // show other divs
+      setShowDiv(true);
+      // make new bills Array of Objects with new object
+      setBills((b) => [...b, newBill]);
 
-    // reset input fields
-    setName("");
-    setCost("");
-    setDate("");
+      // reset input fields
+      setName("");
+      setCost("");
+      setDate("");
+    } else {
+      console.log("please add a bill");
+    }
   }
   function handleRemove(index) {
     const filteredArray = bills.filter((element, i) => i !== index);
@@ -100,37 +104,37 @@ function Budgeter() {
         </button>
       </div>
       {showDiv && (
-      <div id="tabs" className="my-5">
-        <h2 className="mb-3">Select how to order your bills</h2>
-        <button
-          type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={sortByName}
-        >
-          A-Z
-        </button>
-        <button
-          type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={sortByLowestCost}
-        >
-          $
-        </button>
-        <button
-          type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={sortByLargestCost}
-        >
-          $$$
-        </button>
-        <button
-          type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={sortByDate}
-        >
-          Date
-        </button>
-      </div>
+        <div id="tabs" className="my-5">
+          <h2 className="mb-3">Select how to order your bills</h2>
+          <button
+            type="button"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            onClick={sortByName}
+          >
+            A-Z
+          </button>
+          <button
+            type="button"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            onClick={sortByLowestCost}
+          >
+            $
+          </button>
+          <button
+            type="button"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            onClick={sortByLargestCost}
+          >
+            $$$
+          </button>
+          <button
+            type="button"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            onClick={sortByDate}
+          >
+            Date
+          </button>
+        </div>
       )}
       {showDiv && <h2 className="my-3">Click on a bill to remove it</h2>}
       <div id="bills-container">
