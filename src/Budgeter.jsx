@@ -6,9 +6,9 @@ function Budgeter() {
   // bill name
   const [name, setName] = useState("");
   // bill cost
-  const [cost, setCost] = useState();
+  const [cost, setCost] = useState("");
   // bille date
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   // total cost
   const [totalCost, setTotalCost] = useState(0);
   const [showDiv, setShowDiv] = useState(false);
@@ -38,7 +38,7 @@ function Budgeter() {
     }
   }
   function handleRemove(element, index) {
-    const filteredArray = bills.filter((element, i) => i !== index);
+    const filteredArray = bills.filter((elem, i) => i !== index);
     setBills(filteredArray);
 
     // subtract removed bill cost from total cost
