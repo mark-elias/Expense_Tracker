@@ -39,10 +39,10 @@ function ExpenseList({ expenses, onDelete }: Props) {
             </tr>
           ))}
         </tbody>
-        <tfoot className="bg-customMediumPurple rounded">
+        <tfoot>
           <tr>
-            <td className="cell font-semibold">Total</td>
-            <td className="cell font-semibold text-right">
+            <td className="cell font-semibold text-customPurple">Total</td>
+            <td className="cell font-semibold text-right text-customPurple">
               ${expenses.reduce((acc, exp) => acc + exp.amount, 0).toFixed(2)}
             </td>
             <td className="cell"></td>
