@@ -11,9 +11,10 @@ interface Props {
 
 function ExpenseList({ expenses, onDelete }: Props) {
   if (expenses.length === 0) return null;
+
   return (
-    <div className="border rounded-lg overflow-hidden">
-      <table className="cell">
+    <div className="rounded overflow-hidden">
+      <table className="cell w-full">
         <thead className="bg-customMediumPurple text-center">
           <tr>
             <th className="cell">Name</th>
@@ -24,15 +25,12 @@ function ExpenseList({ expenses, onDelete }: Props) {
         </thead>
         <tbody className="">
           {expenses.map((exp) => (
-            <tr key={exp.id} className="odd:bg-customLightPurple text-right">
-              <td className="cell text-left">{exp.name}</td>
+            <tr key={exp.id} className="odd:bg-customLightPurple">
+              <td className="cell">{exp.name}</td>
               <td className="cell">${exp.amount}</td>
               <td className="cell">{exp.dueDate}</td>
               <td className="cell">
-                <button
-                  onClick={() => onDelete(exp.id)}
-                  className="deleteButton"
-                >
+                <button onClick={() => onDelete(exp.id)} className="deleteButton">
                   Delete
                 </button>
               </td>
@@ -42,7 +40,7 @@ function ExpenseList({ expenses, onDelete }: Props) {
         <tfoot>
           <tr>
             <td className="cell font-semibold text-customPurple">Total</td>
-            <td className="cell font-semibold text-right text-customPurple">
+            <td className="cell font-semibold text-customPurple">
               ${expenses.reduce((acc, exp) => acc + exp.amount, 0)}
             </td>
             <td className="cell"></td>

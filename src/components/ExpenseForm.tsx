@@ -6,7 +6,7 @@ const schema = z.object({
   name: z
     .string()
     .min(3, { message: "Expense name should be atleast 3 characters" })
-    .max(25),
+    .max(20),
   amount: z
     .number({ invalid_type_error: "Amount is required" })
     .min(1)
@@ -75,9 +75,11 @@ function ExpenseForm({ onSubmit }: Props) {
           <p className="errorMessage">{errors.dueDate.message}</p>
         )}
       </div>
-      <button type="submit" className="addButton">
-        Add Expense
-      </button>
+      <div className="">
+        <button type="submit" className="addButton">
+          Add Expense
+        </button>
+      </div>
     </form>
   );
 }

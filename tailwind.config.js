@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        customLightPurple: "#F8F7FF",
+        customLightPurple: "#EDEBFF",
         customMediumPurple: "#B8B8FF",
         customPurple: "#9381FF",
       },

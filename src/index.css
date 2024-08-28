@@ -4,7 +4,7 @@
 
 @layer base{
     body{
-        @apply font-medium
+        @apply font-medium bg-customPurple
     }
     label, input{
         @apply block
@@ -16,21 +16,21 @@
 @layer components{
     /* Containers */
     .container{
-        @apply flex flex-col justify-center items-center py-14 gap-5
+        @apply flex flex-col gap-7 bg-white rounded-2xl p-2 w-[380px]
     }
     /* Buttons */
     .deleteButton{
-        @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm text-center px-3 py-[7px]
+        @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm text-center px-2 py-[4px]
     }
     .sortButton{
         @apply  text-customPurple hover:text-white border border-customPurple hover:bg-customPurple focus:ring-4 focus:outline-none focus:ring-customMediumPurple font-medium rounded-lg text-sm text-center px-3 py-[7px]
     }
     .addButton{
-        @apply bg-customPurple hover:text-white border border-customPurple hover:bg-customPurple focus:ring-4 focus:outline-none focus:ring-customMediumPurple font-medium rounded-lg text-sm text-center px-3 py-[7px]
+        @apply bg-customPurple hover:text-white focus:ring-4 focus:outline-none focus:ring-customMediumPurple font-semibold rounded-lg text-sm text-center px-3 py-[8px] w-full
     }
     /* Tables */
     .cell {
-        @apply border border-zinc-300 px-6 py-2
+        @apply text-center py-2
     }
     /* Error Messages */
     .errorMessage{
