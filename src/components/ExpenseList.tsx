@@ -30,7 +30,10 @@ function ExpenseList({ expenses, onDelete }: Props) {
               <td className="cell">${exp.amount}</td>
               <td className="cell">{exp.dueDate}</td>
               <td className="cell">
-                <button onClick={() => onDelete(exp.id)} className="deleteButton">
+                <button
+                  onClick={() => onDelete(exp.id)}
+                  className="deleteButton"
+                >
                   Delete
                 </button>
               </td>
