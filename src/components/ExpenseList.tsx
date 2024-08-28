@@ -13,7 +13,7 @@ function ExpenseList({ expenses, onDelete }: Props) {
   if (expenses.length === 0) return null;
   return (
     <div className="border rounded-lg overflow-hidden">
-      <table className="cell shadow-xl">
+      <table className="cell">
         <thead className="bg-customMediumPurple text-center">
           <tr>
             <th className="cell">Name</th>
@@ -26,7 +26,7 @@ function ExpenseList({ expenses, onDelete }: Props) {
           {expenses.map((exp) => (
             <tr key={exp.id} className="odd:bg-customLightPurple text-right">
               <td className="cell text-left">{exp.name}</td>
-              <td className="cell">{exp.amount}</td>
+              <td className="cell">${exp.amount}</td>
               <td className="cell">{exp.dueDate}</td>
               <td className="cell">
                 <button
@@ -43,7 +43,7 @@ function ExpenseList({ expenses, onDelete }: Props) {
           <tr>
             <td className="cell font-semibold text-customPurple">Total</td>
             <td className="cell font-semibold text-right text-customPurple">
-              ${expenses.reduce((acc, exp) => acc + exp.amount, 0).toFixed(2)}
+              ${expenses.reduce((acc, exp) => acc + exp.amount, 0)}
             </td>
             <td className="cell"></td>
             <td className="cell"></td>

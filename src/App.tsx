@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseSorting from "./components/ExpenseSorting";
+import ExpenseForm from "./components/ExpenseForm";
 
 function App() {
   const [expenses, setExpenses] = useState([
@@ -44,10 +45,20 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <ExpenseSorting onSort={handleSort}></ExpenseSorting>
-        <ExpenseList onDelete={handleDelete} expenses={expenses}></ExpenseList>
-      </div>
+      <section className="p-10 container bg-customPurple">
+        <div className=" flex flex-col gap-7 bg-white p-5 rounded-2xl shadow-2xl border border-zinc-300 w-[500px]">
+          <h1 className="text-3xl font-medium text-center italic border-b-2 border-customPurple mb-4">
+            Expense{" "}
+            <span className="font-black text-customPurple">Tracker</span>
+          </h1>
+          <ExpenseForm></ExpenseForm>
+          <ExpenseSorting onSort={handleSort}></ExpenseSorting>
+          <ExpenseList
+            onDelete={handleDelete}
+            expenses={expenses}
+          ></ExpenseList>
+        </div>
+      </section>
     </>
   );
 }

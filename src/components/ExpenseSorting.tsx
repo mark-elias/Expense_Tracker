@@ -4,11 +4,11 @@ interface Props {
 
 function ExpenseSorting({ onSort }: Props) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 justify-center">
       <button className="sortButton" onClick={() => onSort("name")}>
         A-Z
       </button>
-      <button className="sortButton" onClick={() => onSort("smallest")}>
+      <button className="sortButton px-5" onClick={() => onSort("smallest")}>
         $
       </button>
       <button className="sortButton" onClick={() => onSort("biggest")}>

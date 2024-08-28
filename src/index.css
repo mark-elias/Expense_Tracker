@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+    body{
+        @apply font-medium
+    }
+    label, input{
+        @apply block
+    }
+    input{
+        @apply border border-zinc-300 w-full rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-customPurple
+    }
+}
 @layer components{
     /* Containers */
     .container{
@@ -13,6 +24,9 @@
     }
     .sortButton{
         @apply  text-customPurple hover:text-white border border-customPurple hover:bg-customPurple focus:ring-4 focus:outline-none focus:ring-customMediumPurple font-medium rounded-lg text-sm text-center px-3 py-[7px]
+    }
+    .addButton{
+        @apply bg-customPurple hover:text-white border border-customPurple hover:bg-customPurple focus:ring-4 focus:outline-none focus:ring-customMediumPurple font-medium rounded-lg text-sm text-center px-3 py-[7px]
     }
     /* Tables */
     .cell {
