@@ -32,4 +32,8 @@
     .cell {
         @apply border border-zinc-300 px-6 py-2
     }
+    /* Error Messages */
+    .errorMessage{
+        @apply text-red-500
+    }
 }

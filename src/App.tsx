@@ -15,13 +15,6 @@ function App() {
     setExpenses(expenses.filter((exp) => exp.id !== expenseID));
   }
 
-  // function handleSorting(category: "name" | "amount" | "date") {
-  //   let sortedExpenses;
-  //   if (category === "name") {
-  //     sortedExpenses = [...expenses].sort();
-  //   }
-  // }
-
   // Function to handle sorting of expenses based on a category
   const handleSort = (
     category: "name" | "smallest" | "biggest" | "dueDate"
@@ -51,7 +44,11 @@ function App() {
             Expense{" "}
             <span className="font-black text-customPurple">Tracker</span>
           </h1>
-          <ExpenseForm></ExpenseForm>
+          <ExpenseForm
+            onSubmit={(exp) =>
+              setExpenses([...expenses, { ...exp, id: expenses.length + 1 }])
+            }
+          ></ExpenseForm>
           <ExpenseSorting onSort={handleSort}></ExpenseSorting>
           <ExpenseList
             onDelete={handleDelete}
